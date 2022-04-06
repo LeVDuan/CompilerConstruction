@@ -4,57 +4,85 @@
 #include <string.h>
 #include <stdbool.h>
 
-treetype searchTbyword(treetype T, char* word){
-    elmType wordData;
-    strcpy(wordData.word, word);
-    return searchT(T, wordData);
+/*
+typedef struct elm{
+    char word[50];
+    int appearCount;
+    dblist *rootLine, *curLine, *tailLine;
+}elmType;
+
+typedef struct node_type{
+  elmType element;
+  struct node_type *left,*right;
+}nodeType;
+
+luu cac tu bang cay BS tree 
+trong cac node chua tu, so lan xuat hien va 1 linkedlist chua so thu tu cac dong ma tu do xuat hien
+*/
+
+
+/* tim tu word trong cay
+    ham tra ve node neu tim thay, nguoc lai tra ve null
+*/
+treetype searchTbyword(treetype Tree, char* word){
+    elmType wData;
+    strcpy(wData.word, word);
+    return searchT(Tree, wData);
 }
 
-void AddWord(treetype* wordTree ,char *word, int line){
-    treetype curword = searchTbyword(*wordTree, word);
-    if(curword==NULL){
-        elmType wordData;
-        strcpy(wordData.word, word);
-        wordData.appearCount=1;
-        makeNullList(&(wordData.rootLine), &(wordData.curLine), &(wordData.tailLine));
-        AppendList(line, &(wordData.rootLine), &(wordData.curLine), &(wordData.tailLine));
-        insertNode(wordTree, wordData);
+// ham them tu va dong xuat hien vao cay 
+void AddWord(treetype* Tree ,char *word, int line){
+    treetype wCur = searchTbyword(*Tree, word);
+
+    /* neu khong tim thay -> xuat hien lan dau
+    -> tao list de luu cac dong xuat hien va them so thu tu dong hien tai vao danh sach
+    */
+    if(wCur==NULL){
+        elmType wData;
+        strcpy(wData.word, word);
+        wData.appearCount=1;
+        makeNullList(&(wData.rootLine), &(wData.curLine), &(wData.tailLine));
+        AppendList(line, &(wData.rootLine), &(wData.curLine), &(wData.tailLine));
+        insertNode(Tree, wData);
     }
+    // neu tu da co trong cay -> them so thu tu dong hien tai vao list
     else{
-        curword->element.appearCount++;
-        AppendList(line, &(curword->element.rootLine), &(curword->element.curLine), &(curword->element.tailLine));
+        wCur->element.appearCount++;
+        AppendList(line, &(wCur->element.rootLine), &(wCur->element.curLine), &(wCur->element.tailLine));
     }
 }
+
+// doc file va luu vao cau truc cay
 
 void ReadFile(char* fileName ,treetype* wordTree, treetype* stopTree){
     char c, prevC;
     int count, line;
     char word[20];
-    bool danhTuRieng, isAword;
+    bool pNoun, isAword;
     FILE *ptr=fopen(fileName,"r");
     if(ptr==NULL){
         printf("cant open %s\n", fileName);
         return;
     }
-    for(count=0, line=1, prevC='f', isAword = false, danhTuRieng = false;(c=fgetc(ptr))!=EOF; prevC = c){
+    for(count=0, line=1, prevC='f', isAword = false, pNoun = false;(c=fgetc(ptr))!=EOF; prevC = c){
 
         if( c>='A' && c<='Z'){// Is Upper
             c+=32; // lower
             if(prevC==' '){  //check proper noun
-                danhTuRieng=true;
+                pNoun=true;
             }
         }
 
         if( c<'a' || c>'z'){  //last char of word
-
-            if(!danhTuRieng && isAword){ 
+            // neu khong phai danh tu rieng thi them vao cay
+            if(!pNoun && isAword){ 
                 word[count] = '\0';
                 if(searchTbyword(*stopTree, word) == NULL){
                     AddWord(wordTree, word, line);
                 }
             }
             count = 0;
-            danhTuRieng = false;
+            pNoun = false;
             isAword = false;
 
             if(c == '\n'){

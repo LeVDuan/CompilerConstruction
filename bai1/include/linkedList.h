@@ -1,6 +1,5 @@
 #ifndef LINKEDLIST_H_  
 #define LINKEDLIST_H_
-#define CONSTANT 100
 
 typedef int elementtype; 
 struct list_el{

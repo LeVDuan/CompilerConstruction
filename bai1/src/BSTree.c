@@ -1,6 +1,7 @@
 #include "BSTree.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void makeNullTree(treetype* N){
   (*N)=NULL;
