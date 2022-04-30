@@ -34,3 +34,11 @@ Cách biên dịch trên đã bao gồm các đoạn mã để so sánh kết qu
 ```
 ./parser ../test/example1.kpl
 ```
+- Bên dịch code trong thư mục \bai4: -> Pha 3: Phân tích ngữ nghĩa
+  + \day1: -> Xây dựng bảng kí hiệu
+  ```
+  cd bai4/day1/completed
+  make
+  ./symtab
+  ```
+  Xây dựng và in bảng kí hiệu cho 1 đoạn mã cụ thể  trong file main.c
