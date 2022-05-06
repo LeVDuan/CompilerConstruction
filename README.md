@@ -8,6 +8,10 @@
 + Hệ điều hành: Ubuntu, windows, ...
 
 # Command to compiler code
+- Chú ý: Nếu trong các thư mục có chứa file mytest.sh mà không thể thực thi thì bạn cần cấp quyền cho nó với lệnh sau: 
+```
+chmod +x mytest.sh
+```
 - Bên dịch code trong thư mục \bai1:
 ```
 cd bai1
@@ -42,3 +46,16 @@ Cách biên dịch trên đã bao gồm các đoạn mã để so sánh kết qu
   ./symtab
   ```
   Xây dựng và in bảng kí hiệu cho 1 đoạn mã cụ thể  trong file main.c
+  + \day2: -> Sử dụng bảng kí hiệu để hoàn thiện file paser.c
+  ```
+  cd bai4/day2/completed
+  make
+  ```
+  Bạn có thể test từng ví dụ trong thư mục ./tests như sau:
+  ```
+  ./kplc ../tests/example1.kpl
+  ```
+  Hoặc có thể test tất cả các ví dụ và so sánh với các result bằng cách thực thi file mytest.sh:
+  ```
+  ./mytest.sh
+  ```
