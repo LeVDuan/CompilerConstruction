@@ -59,3 +59,16 @@ Cách biên dịch trên đã bao gồm các đoạn mã để so sánh kết qu
   ```
   ./mytest.sh
   ```
+  + \day3: -> Xây dựng các hàm kiểm tra sự trùng lặp khi khai báo đối tượng, Kiểm tra tham chiếu tới các đối tượng được định nghĩa và triển khai trong các file semantic.h, semantic.c -> tiếp tục hoàn thiện file paser.c
+  ```
+  cd bai4/day3/completed
+  make
+  ```
+  Bạn có thể test từng ví dụ trong thư mục ./tests như sau:
+  ```
+  ./kplc ../tests/example1.kpl
+  ```
+  Hoặc có thể test tất cả các ví dụ và so sánh với các result bằng cách thực thi file mytest.sh:
+  ```
+  ./mytest.sh
+  ```
