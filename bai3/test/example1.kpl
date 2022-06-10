@@ -1,3 +1,20 @@
 Program Example1; (* Example 1 *)
+type arr = array(.5.) of K;
+
+var matrix: array(.5.) of arr;
+    i: K;
+    j: integer;
+
 Begin
+    FOR i:= 1 TO 5 DO
+        FOR j := 1 TO 5 DO
+            BEGIN
+                matrix(.i.)(.j.) := READI;
+                IF i < j THEN
+                    BEGIN
+                        matrix(.i.)(.j.) := 0;
+                    END
+            END
+
+
 End. (* Example 1 *)

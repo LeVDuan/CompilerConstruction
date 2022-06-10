@@ -72,3 +72,16 @@ Cách biên dịch trên đã bao gồm các đoạn mã để so sánh kết qu
   ```
   ./mytest.sh
   ```
+  + \day4: -> Xây dựng các hàm kiểm tra sự nhất quán về kiểu trong các cấu trúc của chương trình như định nghĩa biến mảng, hàm, thủ tục, tham số và triển khai trong các file semantic.h, semantic.c -> tiếp tục hoàn thiện file paser.c
+  ```
+  cd bai4/day4/completed
+  make
+  ```
+  Bạn có thể test từng ví dụ trong thư mục ./tests như sau:
+  ```
+  ./kplc ../tests/example1.kpl
+  ```
+  Hoặc có thể test tất cả các ví dụ và so sánh với các result bằng cách thực thi file mytest.sh:
+  ```
+  ./mytest.sh
+  ```
