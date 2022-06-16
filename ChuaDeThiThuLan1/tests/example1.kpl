@@ -1,0 +1,9 @@
+Program Example1; (* Example 1 *)
+VAR x : INTEGER;
+    y: INTEGER;
+    z : INTEGER;
+    t: INTEGER;
+    c : char;
+Begin
+c, x, y, z, t := 'a' ,z, t, x+y, 10;
+End. (* Example 1 *)
