@@ -130,6 +130,10 @@ make
 - Bên dịch code trong thư mục \bai6: -> interpreter
   + Một bộ thông dịch cho máy ngăn xếp
   + Thực thi mã đích lưu trong file output ở bai 5
+  + Càn tải thêm gói libncurses để hỗ trợ biên dịch:
+  ```
+  sudo apt install libncurses5-dev
+  ```
 ```
 cd bai6/interpreter/
 make
