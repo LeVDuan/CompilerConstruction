@@ -85,3 +85,69 @@ Cách biên dịch trên đã bao gồm các đoạn mã để so sánh kết qu
   ```
   ./mytest.sh
   ```
+- Bên dịch code trong thư mục \bai5: -> Pha 4: Sinh mã đích
+  + Sinh mã là công đoạn biến đổi từ cấu trúc ngữ pháp của chương trình thành chuỗi các lệnh thực thi được của máy đích
+  + Cấu trúc nghữ pháp được quyết định bởi bộ phân tích cú pháp
+  + Các lệnh của máy đích được đặc tả bởi kiến trúc thực thi của máy đích
+  + Máy ngăn xếp: tổ chức bộ nhớ, bộ lệnh
+  + Bổ sung thông tin cho bảng kí hiệu: biến, tham số, hàm/thủ tục/chương trình
+  + Kết quả là tập các lệnh 3 địa địa chỉ hay mã đích lưu vào file output là 1 tham số khi thực thi
+```
+cd bai5/completed
+make
+```
+  + Thực thi chương trình kplc với các tham số đầu vào: 
+  ```
+  Usage: kplc input output [-dump]
+   input: input kpl program
+   output: executable
+   -dump: code dump
+  ```
+  + Ví dụ thực thi 1 chương trình kpl và in mã đích với tham số -dump
+  ```
+  ./kplc ../tests/example1.kpl ../tests/example1 -dump
+  ```
+  + kết quả:
+  ```
+  0:  J 1
+  1:  INT 4
+  2:  LC 68
+  3:  WRC
+  4:  LC 85
+  5:  WRC
+  6:  LC 65
+  7:  WRC
+  8:  LC 78
+  9:  WRC
+  10:  LC 32
+  11:  WRC
+  12:  LC 76
+  13:  WRC
+  14:  LC 86
+  15:  WRC
+  16:  HL
+  ```
+- Bên dịch code trong thư mục \bai6: -> interpreter
+  + Một bộ thông dịch cho máy ngăn xếp
+  + Thực thi mã đích lưu trong file output ở bai 5
+```
+cd bai6/interpreter/
+make
+```
+  + Thực thi kplrun với các tham số đầu vào: 
+  ```
+  Usage: kplrun input [-s=stack_size] [-c=code_size] [-debug] [-dump]
+   input: input kpl program
+   -s=stack_size: set the stack size
+   -c=code_size: set the code size
+   -debug: enable code dump
+  ```
+  + Ví dụ thực thi 1 file chứa mã đích:
+  ```
+  ./kplrun ../../bai5/tests/example1
+  ```
+  + Kết quả:
+  ```
+  DUAN LV
+  Press any key to exit...
+  ```
